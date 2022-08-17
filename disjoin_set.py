@@ -17,11 +17,11 @@ class FastUnionFind:
             return x
         ls = []
         while x != self.root[x]:
-            ls.append(x) # maintain path
+            ls.append(x)  # maintain path
             x = self.root[x]
         for node in ls:
-            self.root[node] = x # compress path
-        self.rank[x] = 1 # by this time, rank becomes 1
+            self.root[node] = x  # compress path
+        self.rank[x] = 1  # by this time, rank becomes 1
         return x
 
     def union(self, x: int, y: int):
@@ -32,12 +32,13 @@ class FastUnionFind:
                 self.root[root_y] = root_x
             elif self.rank[root_x] < self.rank[root_y]:
                 self.root[root_x] = root_y
-            else: # both are of same depth
+            else:  # both are of same depth
                 self.root[root_x] = root_y
                 self.rank[root_y] += 1
 
     def connected(self, x, y):
         return self.find(x) == self.find(y)
+
 
 if __name__ == "__main__":
     uf = FastUnionFind(10)

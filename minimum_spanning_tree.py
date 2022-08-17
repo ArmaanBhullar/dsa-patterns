@@ -26,7 +26,7 @@ class Solution:
             if x == root[x]:
                 return x
             ls = []
-            while (x != root[x]):
+            while x != root[x]:
                 ls.append(x)
                 x = root[x]
             for node in ls:
