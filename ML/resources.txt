@@ -1,0 +1,21 @@
+Generally specific to ML systems and a lot of focus on ml related topics (model monitoring, iteration, serving, feature eng, training serving skew, embedding serving, approximate kNN search, scaling using funneling approach, etc)
+
+Edit:
+Also generally I found people not interested in HDL, DB choice, nosql tradeoff, blah blah.
+
+Edit2:
+Sorry, read it wrong. I thought you are asking about ml sys design round. You may still get another round doing regular sys design, yes.
+
+
+
+Topic: some will ask you what your domain is (ads, recommendations, nlp, CV, etc). Some will not ask you. For the ones that they don't ask you what your domain is, it's usually a generic ml sys like designing a spam detector, designing a home feed ranking system, etc.
+
+
+
+
+General System Design
+vdoc.pub_grokking-the-system-design-interview.pdf downloaded locally
+
+
+System design links -
+https://ravisystemdesign.substack.com/p/interview-preparation-design-a-system

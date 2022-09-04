@@ -2,6 +2,7 @@ from collections import defaultdict
 from typing import List
 import heapq
 
+
 class Solution:
 
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
@@ -9,7 +10,7 @@ class Solution:
         graph = defaultdict(list)
 
         for src, dst, time in times:
-            graph[src].append((dst, time)) # construct graph with node, weight
+            graph[src].append((dst, time))  # construct graph with node, weight
 
         visited = set()
 
@@ -28,19 +29,19 @@ class Solution:
             for edge in edges:
                 destination = edge[0]
                 distance = edge[1]
-                if destination not in visited: # if we've already visited this node then it's analysis is complete,
+                if destination not in visited:  # if we've already visited this node then it's analysis is complete,
                     # skip this
                     current_min_distance = table[destination][0]
                     candidate_min_distance = table[current_node][0] + distance
                     if current_min_distance > candidate_min_distance:
                         # update table entry
                         table[destination] = (candidate_min_distance, current_node)
-                        heapq.heappush(visit_list, (table[destination][0], destination)) # Only if we update distance
+                        heapq.heappush(visit_list, (table[destination][0], destination))  # Only if we update distance
                         # to node do we add a new entry to the heap
 
-            visited.add(current_node) # after going over all the edges, mark this node as visited
+            visited.add(current_node)  # after going over all the edges, mark this node as visited
 
-        if len(visited) < n:# parts of the graph are not reachable
+        if len(visited) < n:  # parts of the graph are not reachable
             return -1
         # finish when all are unvisited
         # return maximum entry in the table
@@ -49,4 +50,3 @@ class Solution:
             if table[i][0] > minim:
                 minim = table[i][0]
         return minim
-

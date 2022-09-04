@@ -1,0 +1,65 @@
+Leetcode
+
+Done
+Graphs, Union Find Data Structure, (DFS, BFS),  Minimum spanning tree,
+
+Left -
+Trees
+Arrays, Stacks, Trees (Binary Trees, Binary Search Trees, Heap), Linked
+List, Queue, Dynamic
+Programming, Recursion & Backtracking, Divide & Conquer, Dictionaries
+(Maps, Hash), String Algorithms: e.g. KMP.
+
+
+Next Up -
+All remaining questions from blind75 (2 weeks). Then see what you need ahead.
+Done 11
+Remaining 64
+
+
+
+Parallel, gather resources for sys design and ML knowledge rounds design rounds
+ML Knowledge - Google has a course - https://developers.google.com/machine-learning/decision-forests/appropriate-data
+Highly likely Google will ask these - https://developers.google.com/machine-learning/advanced-courses
+
+Questions -
+Build a system to identify weapon sales on fb marketplace
+https://www.teamblind.com/post/Meta-ML-System-Design-Ub7JAvfW
+http://fastml.com/
+https://www.amazon.science/blog
+###################### https://leetcode.com/discuss/interview-experience/512591/google-machine-learning-engineer-bangalore-dec-2019-reject/911775
+Onsite Interview 1:
+Design question :
+You are given user_id, timestamp, search_query and list of links clicked by user while doing google search. Design a machine learning system which predicts which links to show based on search query.
+
+Onsite Interview 2
+Design Question:
+
+Design machine learning system which shows spelling and grammer errors and also suggest suitable correction to them while user is typing on google doc.
+Given the output of above model, code the logic in any preferred language (I choose python) which can be used to provide real time correction and predictions to user while he is typing.
+Lunch break with existing google employee
+
+Onsite Interview 3
+Behavioral :
+Describe situations and how did you handled them when:-
+
+Someone else took credit for your work
+Disagreement with collegeue
+Disagreement with management
+How do you manage team
+Project you are proud of
+Onsite Interview 4
+
+Coding round:
+Given a list, find out k elements which produces max sum while you can only take continuous elements from either end.
+For eg : [5,4, 3, 10, 1, 1000, 2]
+for k = 2, elements would be 1000 and 2, hence max sum = 1002
+for k = 3 elements would be 5, 1000 and 2, hence max sum = 1007
+for k = 4 elements would be 5,4,1000,2, hence max sum = 1011
+
+Interviewer told me the question verbally and couln't explain hence I have spent 15 mins trying to understand what she wants me to code. I have still completed the question within 45 mins but got negative feedback.
+
+Onsite Interview 5
+Design round: Detect advertisement boxes within youtube videos using machine learning.
+
+Coding round: Given above machine learning model, Write code in any language which returns frame range/timestamp range and x,y position of the all advertisement boxes in a specific video.
