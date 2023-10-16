@@ -1,0 +1,3 @@
+Most common are -
+1. Anything around palindromes, you can use a dp array of nxn where dp[i][j] = If string[i:j+1] is a palindrome, then compute all entries by iteration and snwer the damn question
+2. Longest common substring - Not yet know
