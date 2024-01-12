@@ -1,6 +1,8 @@
 """
 https://leetcode.com/problems/my-calendar-i/description/
 """
+
+
 class MyCalendar:
 
     def __init__(self):
@@ -14,27 +16,19 @@ class MyCalendar:
 
     def book(self, start: int, end: int) -> bool:
         # find index of this start event
-        if len(self.starts) == 0:
-            self.add(0, start, end)
+        start_idx_start = bisect.bisect_left(self.starts, start)
+        start_idx_end = bisect.bisect_right(self.ends, start)
+        end_idx_start = bisect.bisect_left(self.starts, end)
+        end_idx_end = bisect.bisect_right(self.ends, end)
+        can_be_inserted = (start_idx_start == start_idx_end == end_idx_end == end_idx_start)
+        # print(start_idx_start, start_idx_end, end_idx_start, end_idx_end)
+        # print(can_be_inserted, start, end, self.starts, self.ends)
+        if can_be_inserted:
+            self.add(start_idx_start, start, end)
             return True
-
-        idx = bisect.bisect(self.starts, start)
-
-        if idx == len(self.starts):
-            if self.ends[-1] <= start:
-                self.add(idx, start, end)
-                return True
+        else:
             return False
-        if idx == 0:
-            # at the end
-            if self.starts[0] >= end:
-                self.add(idx, start, end)
-                return True
-            return False
-        else:  # middle somewhere
-            # at the end
-            if self.starts[idx] >= end and self.ends[idx - 1] <= start:
-                self.add(idx, start, end)
-                return True
-            else:
-                return False
+
+# Your MyCalendar object will be instantiated and called as such:
+# obj = MyCalendar()
+# param_1 = obj.book(start,end)

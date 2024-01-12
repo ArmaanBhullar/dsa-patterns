@@ -41,3 +41,20 @@ class Solution:
         #         # print(i, j, count_overlaps)
         #     max_so_far = max(max_so_far, count_overlaps)
         # return max_so_far
+
+####
+# Alternate solution using line sweep
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        max_end = max([interval[1] for interval in intervals])
+        timeline = [0 for idx in range(max_end + 1)]  # no need for additional
+        for start, end in intervals:
+            timeline[start] += 1
+            timeline[end] += -1
+        # now sweep the timeline and check
+        cnt = 0
+        max_cnt = 0
+        for num in timeline:
+            cnt += num
+            max_cnt = max(max_cnt, cnt)
+        return max_cnt

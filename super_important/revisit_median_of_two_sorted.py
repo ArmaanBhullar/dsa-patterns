@@ -1,40 +1,39 @@
 """
 https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 """
+
+
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        n1 = len(nums1)
-        n2 = len(nums2)
-        if n1 < n2:
-            return self.findMedianSortedArrays(nums2, nums1)
-        lo = 0
-        hi = 2 * n2
-        while lo <= hi:
+        n1, n2 = len(nums1), len(nums2)
+        n = n1 + n2
 
-            mid2 = (hi + lo) // 2
-            mid1 = n1 + n2 - mid2
-            print(lo, hi, mid1, mid2)
-            if mid1 == 0:
-                L1 = float('-inf')
-            else:
-                L1 = nums1[(mid1 - 1) // 2]
-            if mid1 == 2 * n1:
-                R1 = float('inf')
-            else:
-                R1 = nums1[mid1 // 2]
-            if mid2 == 0:
-                L2 = float('-inf')
-            else:
-                L2 = nums2[(mid2 - 1) // 2]
-            if mid2 == 2 * n2:
-                R2 = float('inf')
-            else:
-                R2 = nums2[mid2 // 2]
+        def solve(k, start_1, end_1, start_2, end_2):
+            # print(k, start_1, end_1, start_2, end_2)
+            # if segment of one array is empty => we've discarded all the stuff from that segment and we simply return the corresponding element fromt he remaining array
+            if start_1 > end_1:
+                return nums2[k - start_1]
+            if start_2 > end_2:
+                return nums1[k - start_2]
 
-            # update step
-            if L1 > R2:
-                lo = mid2 + 1
-            elif L2 > R1:
-                hi = mid2 - 1
+            # get the middle index and middle values of the two arrays
+            idx_1, idx_2 = (start_1 + end_1) // 2, (start_2 + end_2) // 2
+            val1, val2 = nums1[idx_1], nums2[idx_2]
+
+            # if k is in the right half of nums1. + nums2, remove smaller left half of nums1
+            if k > idx_1 + idx_2:
+                if val1 > val2:
+                    return solve(k, start_1, end_1, idx_2 + 1, end_2)
+                else:
+                    return solve(k, idx_1 + 1, end_1, start_2, end_2)
+            # Otherwise, remove the larger half
             else:
-                return (max(L1, L2) + min(R1, R2)) / 2
+                if val1 > val2:
+                    return solve(k, start_1, idx_1 - 1, start_2, end_2)
+                else:
+                    return solve(k, start_1, end_1, start_2, idx_2 - 1)
+
+        if n % 2 == 1:
+            return solve(n // 2, 0, n1 - 1, 0, n2 - 1)
+        else:
+            return (solve(n // 2 - 1, 0, n1 - 1, 0, n2 - 1) + solve(n // 2, 0, n1 - 1, 0, n2 - 1)) / 2
