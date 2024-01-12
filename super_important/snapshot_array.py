@@ -23,7 +23,8 @@ class SnapshotArray:
         if snap_id in idx_history:
             return idx_history[snap_id]
         else:
-            # will have to search, thanks to the ordered dict, we can do binary search
+            # will have to search given that we don't do an explicit copy for all the snap IDs, so we search for the one snap_id smaller than the given snap_id
+            # thanks to the ordered dict, we can do binary search
             keys = list(idx_history.keys())
             bisect_idx = bisect.bisect(keys, snap_id)
             if bisect_idx == 0:
